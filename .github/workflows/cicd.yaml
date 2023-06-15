@@ -30,7 +30,7 @@ jobs:
 
       - name: Build & Push
         env:
-            REGISTRY: ghcr.io/${{ github.repository }}
+            REGISTRY: ghcr.io
         run: make image push TARGETARCH=$TARGETARCH REGISTRY=$REGISTRY
 
   cd:
