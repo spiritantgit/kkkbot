@@ -2,6 +2,7 @@ APP=$(shell basename $(shell git remote get-url origin))
 REGISTRY=spiritant
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
+TARGETARCH=amd64
 
 get: 
 	go get
@@ -26,3 +27,5 @@ push:
 
 clean: 
 	rm -rf kkkbot
+
+%.o: %.mod
