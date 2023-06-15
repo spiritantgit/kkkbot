@@ -19,3 +19,5 @@ jobs:
 
       - name: Run test
         run: make test
+        image: golang:latest
+        
