@@ -30,7 +30,7 @@ jobs:
 
       - name: Build & Push
         env:
-          APP: "kbot"
+          APP: "kkkbot"
           REGISTRY: ghcr.io/${{ github.repository }}
         run: make image push TARGETARCH=$TARGETARCH
 
