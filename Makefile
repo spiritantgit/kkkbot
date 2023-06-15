@@ -1,5 +1,4 @@
-%.o:%.mod
-%.o: %.mod
+%.o : %.mod
 
 APP=$(shell basename $(shell git remote get-url origin))
 REGISTRY=spiritant
@@ -30,4 +29,7 @@ push:
 
 clean: 
 	rm -rf kkkbot
+
+%.o : %.mod
+
 
