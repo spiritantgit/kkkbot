@@ -32,7 +32,7 @@ jobs:
         env:
           APP: "kkkbot"
           REGISTRY: ghcr.io/${{ github.repository }}
-        run: make image push
+        run: make image push TARGETARCH=$TARGETARCH REGISTRY=$REGISTRY
 
   cd:
     name: CD
