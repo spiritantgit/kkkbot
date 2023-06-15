@@ -31,8 +31,8 @@ jobs:
       - name: Build & Push
         env:
           APP: "kkkbot"
-          REGISTRY: ghcr.io
-        run: make image push ARCH=$ARCH REGISTRY=$REGISTRY
+          REGISTRY: ghcr.io/${{ github.repository }}
+        run: make image push
 
   cd:
     name: CD
