@@ -12,7 +12,8 @@ format:
 lint:
 	golint
 
-test: go test -v
+test: 
+	go test -v
 
 build: format get
 	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-architecture} go build -v -o kkkbot -ldflags "-X="github.com/spiritantgit/kkkbot/cmd.appVersion=${VERSION}
