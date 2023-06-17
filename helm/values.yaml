@@ -7,7 +7,7 @@ image:
   repository: "spiritant"
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1.0.7-88af858"
-  os: ""
+  os: "linux"
   arch: "amd64"
 secret:
   name: "kkkbot"
