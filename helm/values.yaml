@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   repository: "spiritant"
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.7-db688c3"
+  tag: "v1.0.7-8213304"
   os: "linux"
   arch: "amd64"
 secret:
