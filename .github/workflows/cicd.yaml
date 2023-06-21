@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build&Push      
-        run: make image push ARCH=$TARGETARCH REGISTRY=$REGISTRY
+        run: make image push ARCH=$TARGETARCH 
 
   cd:
     name: CD
