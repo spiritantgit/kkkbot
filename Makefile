@@ -1,7 +1,7 @@
 %.o : %.mod
 
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=spiritant
+REGISTRY=ghcr.io/spiritantgit
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 OS=linux
 TARGETARCH=amd64
