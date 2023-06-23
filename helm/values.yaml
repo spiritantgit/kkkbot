@@ -9,6 +9,7 @@ image:
   tag: "v1.0.7-ec5b130"
   os: "linux"
   arch: "amd64"
+  name: "kkkbot"
 secret:
   name: "kkkbot"
   key: "token"
