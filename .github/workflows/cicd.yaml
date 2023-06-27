@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Encrypt secrets
-        uses: actions/secret-patch@v1
+        uses: actions/secret-patch@v2
         with:
           secrets: secrets.yaml
 
