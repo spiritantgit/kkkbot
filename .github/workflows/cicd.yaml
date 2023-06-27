@@ -18,6 +18,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Encrypt secrets
+        uses: actions/secret-patch@v1
+        with:
+          secrets: secrets.yaml
+
       - name: Run test
         run: make test
 
