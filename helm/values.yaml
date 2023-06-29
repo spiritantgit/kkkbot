@@ -6,7 +6,7 @@ replicaCount: 0
 image:
   repository: "ghcr.io/spiritantgit"
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.8-87127fd"
+  tag: "v1.0.8-3b7a140"
   os: "linux"
   arch: "amd64"
   name: "kkkbot"
