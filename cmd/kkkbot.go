@@ -81,47 +81,80 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
+		logger := zerodriver.NewProductionLogger()
 
-		fmt.Printf("kkkbot %s started", appVersion)
-		kkkbot, err := telebot.NewBot(telebot.Settings{
+		kbot, err := telebot.NewBot(telebot.Settings{
 			URL:    "",
 			Token:  TeleToken,
 			Poller: &telebot.LongPoller{Timeout: 10 * time.Second},
 		})
 
 		if err != nil {
-			log.Fatalf("Please check TELE_TOKEN env variable. %s", err)
+			logger.Fatal().Str("Error", err.Error()).Msg("Please check TELE_TOKEN")
 			return
+		} else {
+			logger.Info().Str("Version", appVersion).Msg("kbot started")
+
 		}
 
-		kkkbot.Handle(telebot.OnText, func(m telebot.Context) error {
+		trafficSignal := make(map[string]map[string]int8)
 
-			log.Print(m.Message().Payload, m.Text())
+		trafficSignal["red"] = make(map[string]int8)
+		trafficSignal["amber"] = make(map[string]int8)
+		trafficSignal["green"] = make(map[string]int8)
+
+		trafficSignal["red"]["pin"] = 12
+		trafficSignal["amber"]["pin"] = 27
+		trafficSignal["green"]["pin"] = 22
+
+		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
+			logger.Info().Str("Payload", m.Text()).Msg(m.Message().Payload)
 
 			payload := m.Message().Payload
+			pmetrics(context.Background(), payload)
 
 			switch payload {
 			case "hello":
-				err = m.Send(fmt.Sprintf("Hello I'm kkkbot %s!", appVersion))
+				err = m.Send(fmt.Sprintf("Hello I'm Kbot %s!", appVersion))
+
+			case "red", "amber", "green":
+
+				if trafficSignal[payload]["on"] == 0 {
+					trafficSignal[payload]["on"] = 1
+				} else {
+					trafficSignal[payload]["on"] = 0
+				}
+
+				err = m.Send(fmt.Sprintf("Switch %s light signal to %d", payload, trafficSignal[payload]["on"]))
+
+			default:
+				err = m.Send("Usage: /s red|amber|green")
+
 			}
 
 			return err
 
 		})
-		kkkbot.Start()
+
+		kbot.Start()
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(kkkbotCmd)
+	ctx := context.Background()
+	initMetrics(ctx)
+	rootCmd.AddCommand(kbotCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// kkkbotCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// kbotCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// kkkbotCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// kbotCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	// Initialize OpenTelemetry tracer
+
 }
