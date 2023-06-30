@@ -83,7 +83,7 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		logger := zerodriver.NewProductionLogger()
 
-		kbot, err := telebot.NewBot(telebot.Settings{
+		kkkbot, err := telebot.NewBot(telebot.Settings{
 			URL:    "",
 			Token:  TeleToken,
 			Poller: &telebot.LongPoller{Timeout: 10 * time.Second},
@@ -93,7 +93,7 @@ to quickly create a Cobra application.`,
 			logger.Fatal().Str("Error", err.Error()).Msg("Please check TELE_TOKEN")
 			return
 		} else {
-			logger.Info().Str("Version", appVersion).Msg("kbot started")
+			logger.Info().Str("Version", appVersion).Msg("kkkbot started")
 
 		}
 
@@ -107,7 +107,7 @@ to quickly create a Cobra application.`,
 		trafficSignal["amber"]["pin"] = 27
 		trafficSignal["green"]["pin"] = 22
 
-		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
+		kkkbot.Handle(telebot.OnText, func(m telebot.Context) error {
 			logger.Info().Str("Payload", m.Text()).Msg(m.Message().Payload)
 
 			payload := m.Message().Payload
@@ -115,7 +115,7 @@ to quickly create a Cobra application.`,
 
 			switch payload {
 			case "hello":
-				err = m.Send(fmt.Sprintf("Hello I'm Kbot %s!", appVersion))
+				err = m.Send(fmt.Sprintf("Hello I'm KKKbot %s!", appVersion))
 
 			case "red", "amber", "green":
 
@@ -136,24 +136,24 @@ to quickly create a Cobra application.`,
 
 		})
 
-		kbot.Start()
+		kkkbot.Start()
 	},
 }
 
 func init() {
 	ctx := context.Background()
 	initMetrics(ctx)
-	rootCmd.AddCommand(kbotCmd)
+	rootCmd.AddCommand(kkkbotCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// kbotCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// kkkbotCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// kbotCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// kkkbotCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
 	// Initialize OpenTelemetry tracer
 
