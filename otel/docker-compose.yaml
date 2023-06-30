@@ -2,7 +2,7 @@ version: "3"
 services:
 
   # Kbot
-  kbot:
+  kkkbot:
     image: docker.io/spiritant/kkkbot:v1.0.7-37fe457-linux-amd64
     environment:
       - METRICS_HOST=collector:4317
