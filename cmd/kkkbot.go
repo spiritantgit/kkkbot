@@ -4,13 +4,13 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
 	"context"
+	"fmt"
 	"os"
 	"time"
 
-	"github.com/spf13/cobra"
 	"github.com/hirosassa/zerodriver"
+	"github.com/spf13/cobra"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
@@ -21,7 +21,7 @@ import (
 
 var (
 	// Telebot bot
-	TeleToken   = os.Getenv("TELE_TOKEN")
+	TeleToken = os.Getenv("TELE_TOKEN")
 	// MetricsHost exporter host:port
 	MetricsHost = os.Getenv("METRICS_HOST")
 )
@@ -67,7 +67,6 @@ func pmetrics(ctx context.Context, payload string) {
 	// Add a value of 1 to the Int64Counter
 	counter.Add(ctx, 1)
 }
-
 
 // kkkbotCmd represents the kkkbot command
 var kkkbotCmd = &cobra.Command{

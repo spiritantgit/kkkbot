@@ -1,4 +1,4 @@
-module github.com/den-vasyliev/kbot
+module github.com/spiritantgit/kkkbot
 
 go 1.20
 
@@ -24,7 +24,6 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
-	github.com/spiritantgit/kkkbot v1.0.8 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/internal/retry v1.16.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric v0.39.0 // indirect
 	go.opentelemetry.io/otel/metric v1.16.0 // indirect
