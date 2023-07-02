@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"fmt"
-	"log"
+	"context"
 	"os"
 	"time"
 
