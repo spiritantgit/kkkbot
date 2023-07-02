@@ -3,7 +3,7 @@ services:
 
   # Kbot
   kkkbot:
-    image: docker.io/spiritant/kkkbot:v1.0.8-37fe457-linux-amd64
+    image: ghcr.io/spiritantgit/kkkbot:v1.0.8-582b87f-linux-amd64
     environment:
       - METRICS_HOST=collector:4317
       - TELE_TOKEN=${TELE_TOKEN}
