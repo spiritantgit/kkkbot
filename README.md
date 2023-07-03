@@ -1,18 +1,8 @@
-# kkkbot
-# ####Comments
-# test21
+![](https://github.com/spiritantgit/kkkbot/blob/grafana/grafana.gif)
 
-This is my first test telebot for devops practice.
-
-HOW TO INSTALL:
-
-1) upload the telebot using public repository 
-https://github.com/spiritantgit/kkkbot
-
-2) using BotFather get and save your own TELE_TOKEN
-
-4) add variable using 
-read -s TELE_TOKEN
-
-5) run the binary file:
-./kkkbot start
+HOW TO:
+```bash
+git clone https://github.com/spiritantgit/kkkbot.git
+export TELE_TOKEN=<TOKEN> ## your telegram token
+docker-compose -f otel/docker-compose.yaml up
+```
